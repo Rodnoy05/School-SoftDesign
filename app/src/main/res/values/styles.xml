@@ -6,12 +6,18 @@
         <item name="colorPrimary">@color/newColorPrimary</item>
         <item name="colorPrimaryDark">@color/newColorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
 <!--        <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>-->
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
 
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <style name="font">
         <item name="android:layout_width">wrap_content</item>
@@ -31,15 +37,16 @@
 
     <style name="item_menu">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:minHeight">@dimen/heightitem_menu</item>
-        <item name="android:paddingTop">@dimen/margin_24</item>
+        <item name="android:layout_height">@dimen/height_item_menu</item>
+<!--        <item name="android:minHeight">@dimen/heightitem_menu</item>-->
+            <item name="android:paddingTop">@dimen/margin_16</item>
         <item name="android:paddingBottom">@dimen/margin_16</item>
     </style>
 
     <style name="icon_menu">
         <item name="android:layout_width">@dimen/iconsize_menu</item>
         <item name="android:layout_height">@dimen/iconsize_menu</item>
+
     </style>
 
 
