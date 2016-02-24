@@ -21,5 +21,13 @@
     <string name="fio">Завьялова Любовь</string>
     <string name="email">Rodnoy05@mail.ru</string>
     <string name="user_rating">1</string>
+    <string name="phone_number">8-9171-27-83-74</string>
+    <string name="phone_label">Мобильный</string>
+    <string name="e_mail">Rodnoy05@mail.ru</string>
+    <string name="e_mail_label">E-mail</string>
+    <string name="vk">http://vk.com/rodnoy05</string>
+    <string name="vk_label">vk.com</string>
+    <string name="github">rodnoy05/school-softdesign</string>
+    <string name="github_label">GitHub.com</string>
 
 </resources>

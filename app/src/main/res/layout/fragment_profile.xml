@@ -1,16 +1,185 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <RelativeLayout
+        style="@style/item_menu"
+        android:layout_marginTop="@dimen/margin_8">
 
-       <TextView
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:text="@string/fragment.profile.description"
-          android:layout_gravity="center_horizontal"
-          android:layout_centerVertical="true"
-          android:layout_centerHorizontal="true" />
+        <android.support.v7.widget.AppCompatImageView
+            style="@style/icon_menu"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/margin_16"
+            android:src="@drawable/ic_phone_in_talk_24dp"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/margin_56">
 
-</RelativeLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:fontFamily="@string/font_regular"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="@string/phone_number"
+                android:textAlignment="viewStart"
+                android:textColor="@color/textColorPrimaryDark"
+                android:textSize="@dimen/fontsize_big"
+                tools:ignore="RtlCompat,UnusedAttribute"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:fontFamily="@string/font_regular"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="@string/phone_label"
+                android:textAlignment="viewStart"
+                android:textColor="@color/textColorPrimary"
+                android:textSize="@dimen/fontsize_normal"
+                tools:ignore="RtlCompat,UnusedAttribute"/>
+
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        style="@style/item_menu"
+        android:layout_marginTop="@dimen/margin_8">
+
+        <android.support.v7.widget.AppCompatImageView
+            style="@style/icon_menu"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/margin_16"
+            android:src="@drawable/ic_mail_24dp"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/margin_56">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:fontFamily="@string/font_regular"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="@string/e_mail"
+                android:textAlignment="viewStart"
+                android:textColor="@color/textColorPrimaryDark"
+                android:textSize="@dimen/fontsize_big"
+                tools:ignore="RtlCompat,UnusedAttribute"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:fontFamily="@string/font_regular"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="@string/e_mail_label"
+                android:textAlignment="viewStart"
+                android:textColor="@color/textColorPrimary"
+                android:textSize="@dimen/fontsize_normal"
+                tools:ignore="RtlCompat,UnusedAttribute"/>
+
+        </LinearLayout>
+    </RelativeLayout>
+    <RelativeLayout
+        style="@style/item_menu"
+        android:layout_marginTop="@dimen/margin_8">
+
+        <android.support.v7.widget.AppCompatImageView
+            style="@style/icon_menu"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/margin_16"
+            android:src="@drawable/ic_format_bold_24dp"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/margin_56">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:fontFamily="@string/font_regular"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="@string/vk"
+                android:textAlignment="viewStart"
+                android:textColor="@color/textColorPrimaryDark"
+                android:textSize="@dimen/fontsize_big"
+                tools:ignore="RtlCompat,UnusedAttribute"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:fontFamily="@string/font_regular"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="@string/vk_label"
+                android:textAlignment="viewStart"
+                android:textColor="@color/textColorPrimary"
+                android:textSize="@dimen/fontsize_normal"
+                tools:ignore="RtlCompat,UnusedAttribute"/>
+
+        </LinearLayout>
+    </RelativeLayout>
+    <RelativeLayout
+        style="@style/item_menu"
+        android:layout_marginTop="@dimen/margin_8">
+
+        <android.support.v7.widget.AppCompatImageView
+            style="@style/icon_menu"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/margin_16"
+            android:src="@drawable/ic_android_24dp"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/margin_56">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:fontFamily="@string/font_regular"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="@string/github"
+                android:textAlignment="viewStart"
+                android:textColor="@color/textColorPrimaryDark"
+                android:textSize="@dimen/fontsize_big"
+                tools:ignore="RtlCompat,UnusedAttribute"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:fontFamily="@string/font_regular"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="@string/github_label"
+                android:textAlignment="viewStart"
+                android:textColor="@color/textColorPrimary"
+                android:textSize="@dimen/fontsize_normal"
+                tools:ignore="RtlCompat,UnusedAttribute"/>
+
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>

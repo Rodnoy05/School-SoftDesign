@@ -1,16 +1,22 @@
 package com.softdesign.school.ui.activities;
 
 import android.os.Build;
+import android.os.Handler;
+import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.ViewCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -20,12 +26,15 @@ import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import com.softdesign.school.R;
+import com.softdesign.school.data.storage.models.User;
 import com.softdesign.school.ui.fragments.ContactsFragment;
 import com.softdesign.school.ui.fragments.ProfileFragment;
 import com.softdesign.school.ui.fragments.SettingFragment;
 import com.softdesign.school.ui.fragments.TasksFragment;
 import com.softdesign.school.ui.fragments.TeamFragment;
 import com.softdesign.school.utils.Lg;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -37,13 +46,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     int mToolBarColor = R.color.newColorPrimary;
     int mStatusBarColor = R.color.newColorPrimaryDark;
 
-    Toolbar mToolbar;
-
+    private Toolbar mToolbar;
     private NavigationView mNavigationView;
     private DrawerLayout mNavigationDrawer;
     private Fragment mFragment;
+    public AppBarLayout mAppBar;
+    public CollapsingToolbarLayout mCollapsingToolBar;
     private FrameLayout mFrameConteiner;
+    private View mHeaderLayout;
 
+    public AppBarLayout.LayoutParams params = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,11 +77,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         /**
          * Определение элементов
          */
+        mToolbar = (Toolbar) findViewById(R.id.Toolbar);
         mNavigationDrawer = (DrawerLayout) findViewById(R.id.navigation_drawer);
         mNavigationView = (NavigationView) findViewById(R.id.navigation_view);
-
-        mToolbar = (Toolbar) findViewById(R.id.Toolbar);
-
+        mAppBar = (AppBarLayout) findViewById(R.id.appbar);
+        mCollapsingToolBar = (CollapsingToolbarLayout) findViewById(R.id.collapsingToolbar);
         setupToolbar();
         setupDrawer();
 
@@ -90,6 +102,40 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (actionBar != null) {
             actionBar.setHomeAsUpIndicator(R.drawable.ic_menu_24dp);
             actionBar.setDisplayHomeAsUpEnabled(true);
+        }
+    }
+
+    public void appBarLock(boolean collapse, int number_fragment) {
+        params = (AppBarLayout.LayoutParams) mCollapsingToolBar.getLayoutParams();
+        params.setScrollFlags(AppBarLayout.LayoutParams.SCROLL_FLAG_SCROLL | AppBarLayout.LayoutParams.SCROLL_FLAG_EXIT_UNTIL_COLLAPSED | AppBarLayout.LayoutParams.SCROLL_FLAG_SNAP);
+        mCollapsingToolBar.setLayoutParams(params);
+        if(collapse) {
+            /*Свернуть AppBar*/
+            mAppBar.setExpanded(false);}
+        /*Развернуть AppBar*/
+        else {
+            mAppBar.setExpanded(true);
+            params.setScrollFlags(AppBarLayout.LayoutParams.SCROLL_FLAG_SCROLL | AppBarLayout.LayoutParams.SCROLL_FLAG_EXIT_UNTIL_COLLAPSED | AppBarLayout.LayoutParams.SCROLL_FLAG_SNAP);
+            mCollapsingToolBar.setLayoutParams(params);
+        }
+
+        /*Смена Title в зависимости от выбранного фрагмента*/
+        switch (number_fragment) {
+            case 1:
+                mCollapsingToolBar.setTitle(getResources().getString(R.string.fio));
+                break;
+            case 2:
+                mCollapsingToolBar.setTitle(getResources().getString(R.string.drawer_contacts));
+                break;
+            case 3:
+                mCollapsingToolBar.setTitle(getResources().getString(R.string.drawer_team));
+                break;
+            case 4:
+                mCollapsingToolBar.setTitle(getResources().getString(R.string.drawer_tasks));
+                break;
+            case 5:
+                mCollapsingToolBar.setTitle(getResources().getString(R.string.drawer_setting));
+                break;
         }
     }
 
@@ -193,51 +239,36 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 switch (item.getItemId()) {
                     case R.id.drawer_profile:
                         mFragment = new ProfileFragment();
-                        mNavigationView.getMenu().findItem(R.id.drawer_profile).setChecked(true);
-                        /**
-                         * 6 - уровень лога (ERROR)
-                         */
+                        /* 6 - уровень лога (ERROR) */
                         Lg.msgLog(6, this.getClass().getName(), "ProfileFragment");
                         Toast.makeText(MainActivity.this, item.getTitle().toString(), Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.drawer_contacts:
                         mFragment = new ContactsFragment();
-                        mNavigationView.getMenu().findItem(R.id.drawer_contacts).setChecked(true);
-                        /**
-                         * 6 - уровень лога (ERROR)
-                         */
+                        /* 6 - уровень лога (ERROR) */
                         Lg.msgLog(6, this.getClass().getName(), "ContactsFragment");
                         Toast.makeText(MainActivity.this, item.getTitle().toString(), Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.drawer_tasks:
                         mFragment = new TasksFragment();
-                        mNavigationView.getMenu().findItem(R.id.drawer_tasks).setChecked(true);
-                        /**
-                         * 6 - уровень лога (ERROR)
-                         */
+                        /* 6 - уровень лога (ERROR) */
                         Lg.msgLog(6, this.getClass().getName(), "TasksFragment");
                         Toast.makeText(MainActivity.this, item.getTitle().toString(), Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.drawer_team:
                         mFragment = new TeamFragment();
-                        mNavigationView.getMenu().findItem(R.id.drawer_team).setChecked(true);
-                        /**
-                         * 6 - уровень лога (ERROR)
-                         */
+                        /* 6 - уровень лога (ERROR) */
                         Lg.msgLog(6, this.getClass().getName(), "TeamFragment");
                         Toast.makeText(MainActivity.this, item.getTitle().toString(), Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.drawer_setting:
                         mFragment = new SettingFragment();
-                        mNavigationView.getMenu().findItem(R.id.drawer_setting).setChecked(true);
-                        /**
-                         * 6 - уровень лога (ERROR)
-                         */
+                        /* 6 - уровень лога (ERROR) */
                         Lg.msgLog(6, this.getClass().getName(), "SettingFragment");
                         Toast.makeText(MainActivity.this, item.getTitle().toString(), Toast.LENGTH_SHORT).show();
                         break;
-
                 }
+
                 if (mFragment != null) {
                     getSupportFragmentManager().beginTransaction().replace(R.id.main_frame_container, mFragment).addToBackStack(null).commit();
                 }

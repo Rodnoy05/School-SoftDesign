@@ -2,8 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
 
-    android:layout_height="@dimen/nav_header_heigth"
-    android:layout_marginTop="@dimen/margin_24">
+    android:layout_height="@dimen/nav_header_heigth">
+   <!-- android:layout_marginTop="@dimen/margin_24"-->
 
     <ImageView
         android:layout_width="match_parent"
@@ -45,7 +45,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_marginTop="@dimen/margin_16"
                 android:layout_marginRight="@dimen/margin_16"
-                android:src="@mipmap/ic_textview"/>
+                android:src="@drawable/ic_brightness_1_24dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
